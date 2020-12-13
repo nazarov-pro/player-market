@@ -1,0 +1,10 @@
+plugins {
+    id 'java'
+}
+
+group 'com.shahinnazarov'
+version "$versionMajorNumber.$versionMinorNumber.$versionBuildNumber"
+
+dependencies {
+
+}

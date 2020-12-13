@@ -1,0 +1,4 @@
+app:
+  integration:
+    finnhub:
+      token: buii6df48v6rtf2l60ug

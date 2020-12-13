@@ -1,0 +1,17 @@
+version: "3"
+services:
+  player_market_db:
+    container_name: player_market_db
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secured
+    volumes:
+      - player_market_db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  player_market_db:
+    driver: local

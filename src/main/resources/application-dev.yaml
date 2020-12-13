@@ -1,0 +1,4 @@
+app:
+  integration:
+    finnhub:
+      token: sandbox_buii6cn48v6rtf2l60u0

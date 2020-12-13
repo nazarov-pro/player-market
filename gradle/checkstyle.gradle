@@ -1,0 +1,29 @@
+checkstyle {
+    project.ext.checkstyleVersion = '8.17'
+    project.ext.sevntuChecksVersion = '1.32.0'
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2"
+        }
+    }
+
+    ignoreFailures = true
+    configFile = file("${project.rootDir}/configs/checkstyle.xml")
+    reportsDir = file("$project.buildDir/checkstyleReports")
+    configProperties = ['baseDir': "$project.projectDir"]
+
+    checkstyleMain {
+        source = sourceSets.main.java
+    }
+
+    configurations {
+        checkstyle
+    }
+
+    dependencies{
+        checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+        checkstyle "com.github.sevntu-checkstyle:sevntu-checks:${sevntuChecksVersion}"
+    }
+}

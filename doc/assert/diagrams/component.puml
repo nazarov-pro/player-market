@@ -1,0 +1,44 @@
+@startuml
+
+package "Infrastructure" as infra {
+
+    database "PostgreSQL" as rdbms {
+        component "Team DB" as team_db <<Database>>
+        component "Player DB" as player_db <<Database>>
+    }
+
+    package "Player Market" as internal {
+        component "Eureka" as service_discovery <<Service Discovery>>
+
+        component "Zuul" as gateway <<API Gateway>>
+
+        component "Team Service" as team_svc <<Microservice>>
+
+        component "Player Service" as player_svc <<Microservice>>
+
+        interface "Team HTTP" as team_svc_http
+        team_svc_http .. team_svc
+
+        interface "Player HTTP" as player_svc_http
+        player_svc_http .. player_svc
+
+        gateway .. player_svc_http
+        gateway .. team_svc_http
+        service_discovery .. team_svc
+        service_discovery .. player_svc
+        service_discovery .. gateway
+
+    }
+
+    team_svc .. team_db : Team Database
+    player_svc .. player_db : Player Database
+
+}
+
+interface "Gateway HTTP" as gateway_http
+gateway .. gateway_http
+
+
+
+
+@enduml

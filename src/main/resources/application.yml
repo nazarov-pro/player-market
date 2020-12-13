@@ -1,0 +1,44 @@
+# TODO: Move sensitive data to env vars or vault
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: "Payday Trading"
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/payday?user=postgres&password=secured2019"
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      "hibernate.jdbc.lob.non_contextual_creation": true
+    database-platform: org.hibernate.dialect.ProgressDialect
+    hibernate:
+      ddl-auto: update
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+      finnhub-v1:
+        url: "https://finnhub.io/api/v1"
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+
+
+management:
+  endpoint:
+    health:
+      group:
+        liveness:
+          include: "livenessProbe,db"
+        readiness:
+          include: "livenessProbe,readinessProbe,db,cacheCheck"

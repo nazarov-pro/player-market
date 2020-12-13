@@ -1,0 +1,28 @@
+server:
+  port: ${GATEWAY_PORT:8800}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_URL:http://localhost:8761/eureka}
+
+spring:
+  application:
+    name: gateway
+  main:
+    banner-mode: off
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: player-service
+          uri: lb://player-service
+          predicates:
+            - Path=/players/**
+        - id: team-service
+          uri: lb://team-service
+          predicates:
+            - Path=/teams/**

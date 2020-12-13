@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "1cb62951-5ee5-473e-93d0-981160405736",
+		"name": "Payday Trading",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0. Actuator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/actuator/health/readiness",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"actuator",
+						"health",
+						"readiness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"me@shahinnazarov.com\",\n  \"password\": \"Admin123\",\n  \"username\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/user/register",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Activate User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/user/activate?id=1&email=me@shahinnazarov.com&activationToken=eb871e3e-ad50-43bb-9c99-ddbf63abb166",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						"activate"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "email",
+							"value": "me@shahinnazarov.com"
+						},
+						{
+							"key": "activationToken",
+							"value": "eb871e3e-ad50-43bb-9c99-ddbf63abb166"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"Admin123\",\n  \"usernameOrEmail\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/auth",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Bank Accounts Create ( get version from  bank account create request or banc accounts list reques)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/bank-accounts/create",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"bank-accounts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Bank Accounts Top Up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 200.5,\n    \"version\": \"a58d3ac4-1d87-4a67-b32a-f332adb04599\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/bank-accounts/1/top-up",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"bank-accounts",
+						"1",
+						"top-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Bank Accounts List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/bank-accounts",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"bank-accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Stocks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/market",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"market"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Stocks Filter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/market?symbols=AAPL,GOOG",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"market"
+					],
+					"query": [
+						{
+							"key": "symbols",
+							"value": "AAPL,GOOG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. Buy stock(s)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"targetAmount\": 30,\n    \"symbol\": \"IRM\",\n    \"symbolUnit\": 1,\n    \"bankAccountId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/buy",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10. All Stock Orders (All with current status)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/orders",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11. Get by id Stock Order (with current status)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/orders/1",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12. Sell stock(s)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"targetAmount\": 20,\n    \"symbol\": \"IRM\",\n    \"symbolUnit\": 1,\n    \"bankAccountId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/sell",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13. Purchased Stocks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "14. Subscribe for a new stock and check it 7. Stocks list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/subscribe/AAL",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"subscribe",
+						"AAL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15. Unsubscribe for an existed stock and check it 7. Stocks list Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbIlVTRVIiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwNDg3MTAwMiwiZXhwIjoxNjA0ODc4MjAyfQ.Z6ierkmkrfhdACvNsUIF-yJzHmI68-WEKNFcF5ZUoYk"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:{{port}}/stocks/unsubscribe/AAL",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"stocks",
+						"unsubscribe",
+						"AAL"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

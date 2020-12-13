@@ -1,0 +1,28 @@
+import java.time.Instant
+
+jib {
+    allowInsecureRegistries = true
+
+    from {
+        image = "gcr.io/distroless/java"
+    }
+
+    to {
+        image = "${dockerRegistry}${project.name}"
+        project.afterEvaluate {
+            tags = [project.version.toString(), "latest"]
+        }
+        auth.username = dockerUser
+        auth.password = dockerPassword
+    }
+
+    container {
+        appRoot = "/app"
+        creationTime = Instant.now()
+        jvmFlags = [
+            '-XX:TieredStopAtLevel=1', '-XX:+UnlockExperimentalVMOptions', '-XX:+UseCGroupMemoryLimitForHeap',
+            '-XX:InitialRAMPercentage=50.0', '-XX:MaxRAMPercentage=75.0',
+            '-XX:MinRAMPercentage=25.0', '-XX:+HeapDumpOnOutOfMemoryError'
+        ]
+    }
+}
