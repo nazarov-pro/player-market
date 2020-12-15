@@ -6,6 +6,9 @@ import com.shahinnazarov.team.container.entities.TeamEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * TeamResponseConverter - converting from entity to response
+ */
 @Component
 @RequiredArgsConstructor
 public class TeamResponseConverter implements BaseConverter<TeamEntity, TeamResponse> {
@@ -16,6 +19,7 @@ public class TeamResponseConverter implements BaseConverter<TeamEntity, TeamResp
         response.setId(item.getId());
         response.setName(item.getName());
         response.setBudget(item.getBudget());
+        response.setCommissionPercentage(item.getCommissionPercentage());
         return response;
     }
 

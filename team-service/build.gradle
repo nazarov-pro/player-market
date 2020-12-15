@@ -5,10 +5,12 @@ plugins {
 }
 
 group 'com.shahinnazarov'
-version '1.0.0'
+version "$versionMajorNumber.$versionMinorNumber.$versionBuildNumber"
 
-repositories {
-    mavenCentral()
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
 
 dependencies {
@@ -27,7 +29,9 @@ dependencies {
 
     //cloud
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    implementation("io.github.openfeign:feign-httpclient:${feignHttpVersion}")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
 
     //validations
     implementation 'javax.validation:validation-api'
@@ -40,14 +44,8 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"
     }
-}
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
-test {
-    useJUnitPlatform()
 }

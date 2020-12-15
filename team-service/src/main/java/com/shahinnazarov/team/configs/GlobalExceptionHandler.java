@@ -2,10 +2,10 @@ package com.shahinnazarov.team.configs;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shahinnazarov.common.container.exceptions.AbstractBaseException;
 import com.shahinnazarov.common.container.models.ApiError;
 import com.shahinnazarov.common.container.models.ApiMetadata;
 import com.shahinnazarov.common.utils.ApiResponseGenerator;
-import com.shahinnazarov.team.container.exceptions.AbstractBaseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +23,9 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 
+/**
+ * Global exception handler
+ */
 @Configuration
 @RequiredArgsConstructor
 @Slf4j

@@ -20,6 +20,22 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_CLIENT_URL:http://localhost:8761/eureka}
+  instance:
+    hostname: ${spring.application.name}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
 
 management:
   endpoint:

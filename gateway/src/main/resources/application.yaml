@@ -26,3 +26,32 @@ spring:
           uri: lb://team-service
           predicates:
             - Path=/teams/**
+        - id: team-service-docs
+          uri: lb://team-service
+          predicates:
+            - Path=/docs/team-service/v2/api-docs
+          filters:
+            - RewritePath=/docs/team-service/v2/api-docs, /v2/api-docs
+        - id: player-service-docs
+          uri: lb://player-service
+          predicates:
+            - Path=/docs/player-service/v2/api-docs
+          filters:
+            - RewritePath=/docs/player-service/v2/api-docs, /v2/api-docs
+
+
+api-docs:
+  endpoints:
+    player-service:
+      gateway-prefix: /docs
+      service-url: http://player-service
+      service-path: /player-service/v2/api-docs
+    team-service:
+      gateway-prefix: /docs
+      service-url: http://team-service
+      service-path: /team-service/v2/api-docs
+
+springdoc:
+  swagger-ui:
+    path: /
+    configUrl: /swagger-config.json

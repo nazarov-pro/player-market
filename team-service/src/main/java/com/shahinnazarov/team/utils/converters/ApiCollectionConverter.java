@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+/**
+ * ApiCollectionConverter from page to apiCollection
+ */
 @Component
 @RequiredArgsConstructor
 public class ApiCollectionConverter {
@@ -18,7 +21,7 @@ public class ApiCollectionConverter {
         ApiCollectionResponse<T> response = responseGenerator.generateForCollection(
                 item.getContent().stream().map(converter::convert).collect(Collectors.toList())
         );
-        response.setCurrentPageNumber(item.getNumber());
+        response.setCurrentPageIndex(item.getNumber());
         response.setMaxPages(item.getTotalPages());
         response.setMaxElementsPerPage(item.getPageable().getPageSize());
         return response;

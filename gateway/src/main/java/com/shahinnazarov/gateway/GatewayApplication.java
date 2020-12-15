@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * Main execution point of the Gateway(Spring cloud gateway) Application
+ */
 @EnableDiscoveryClient
 @SpringBootApplication
 public class GatewayApplication {

@@ -1,26 +1,11 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.0.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
 }
 
 group 'com.shahinnazarov'
-version '1.0.0'
-
-repositories {
-    mavenCentral()
-}
-
-ext {
-    springCloudVersion = "Hoxton.SR1"
-}
-
-dependencies {
-    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
-    }
-}
+version "$versionMajorNumber.$versionMinorNumber.$versionBuildNumber"
 
 dependencyManagement {
     imports {
@@ -28,6 +13,17 @@ dependencyManagement {
     }
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    //monitoring
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+
+    //cloud
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+
+    //test
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
 }

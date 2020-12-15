@@ -1,0 +1,27 @@
+version: "3"
+services:
+  player_service:
+    container_name: player-service
+    build: .
+    ports:
+      - "8801:8801"
+    environment:
+      PLAYER_SERVICE_PORT: 8801
+      EUREKA_CLIENT_URL: http://service-discovery:8761/eureka
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://player-market-db:5432/player?user=player&password=secured"
+    networks:
+      - backend-network
+      - database-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+
+networks:
+  backend-network:
+    name: backend-player-market-network
+    external: true
+  database-network:
+    name: db-player-market-network
+    external: true

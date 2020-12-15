@@ -1,0 +1,21 @@
+version: "3"
+services:
+  service_discovery:
+    container_name: service-discovery
+    build: .
+    ports:
+      - "8761:8761"
+    environment:
+      EUREKA_PORT: 8761
+      EUREKA_HOSTNAME: service-discovery
+    networks:
+      - backend-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+networks:
+  backend-network:
+    name: backend-player-market-network
+    external: true

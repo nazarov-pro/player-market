@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+/**
+ * Main execution point of the Service Discovery(EUREKA) Application
+ */
 @EnableEurekaServer
 @SpringBootApplication
 public class ServiceDiscoveryApplication {

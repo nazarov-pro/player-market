@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "6f8a9b27-0bf7-4110-8b7b-d4aaa8d193f3",
+		"name": "PLAYER_MARKET",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PLAYER_SVC",
+			"item": [
+				{
+					"name": "001.SAVE PLAYER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Shahin\",\n    \"lastname\": \"Nazarov\",\n    \"monthsOfExperience\": 36,\n    \"dateOfBirth\": \"01/04/1997\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/players",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "002.UPDATE PLAYER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Shahin\",\n    \"lastname\": \"Nazarov2\",\n    \"monthsOfExperience\": 3,\n    \"dateOfBirth\": \"01/04/1997\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/players/23",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "003.DELETE PLAYER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/players/23",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "004.FETCH PAGE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/players?pageIndex=1&pageSize=5",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "005.FETCH ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/players/9",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "006.FETCH TEAMS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/players/8/teams",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players",
+								"8",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "007.FETCH PLAYERS QUERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [7, 8]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/players/query",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"players",
+								"query"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TEAM_SVC",
+			"item": [
+				{
+					"name": "101. SAVE TEAM",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bayern Munich\",\n    \"commissionPercentage\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/teams",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "102. UPDATE TEAM",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bayern Munich2\",\n    \"commissionPercentage\": 5.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/16",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "103. DELETE TEAM",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/16",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "104. FETCH TEAMS PAGE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams?pageIndex=0&pageSize=10",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "105. FETCH TEAM BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/5",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "106. CREDIT(INCREASE BUDGET) TEAM",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/8/credit?amount=500000",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"8",
+								"credit"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "500000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "107. TRANSFER PLAYER TO TEAM",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/8/players/10/transfer",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"8",
+								"players",
+								"10",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "108. FETCH PLAYERS OF TEAM",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/8/players",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"8",
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "109. FETCH TEAMS OF PLAYER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/search?playerId=10",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"search"
+							],
+							"query": [
+								{
+									"key": "playerId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "110. REMOVE PLAYER FROM TEAM",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/8/players/10/remove",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"8",
+								"players",
+								"10",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "111. REMOVE PLAYER FROM ALL TEAMS",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}/teams/players/10/remove",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"teams",
+								"players",
+								"10",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3c0b1b87-7429-4c7e-a3db-3c5c99193838",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "578622fe-8420-4f68-938a-a7d5b2ef87ff",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ca510b71-156b-4170-969d-f9e0251f793b",
+			"key": "host",
+			"value": "localhost"
+		},
+		{
+			"id": "f3329b9e-31f2-4423-ae62-c40bdcfa6cbe",
+			"key": "port",
+			"value": "8800"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

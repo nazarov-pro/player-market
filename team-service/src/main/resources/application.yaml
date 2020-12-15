@@ -16,6 +16,20 @@ spring:
 server:
   port: ${TEAM_SERVICE_PORT:8802}
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+
 eureka:
   client:
     service-url:

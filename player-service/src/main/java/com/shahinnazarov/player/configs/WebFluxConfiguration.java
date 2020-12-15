@@ -5,6 +5,9 @@ import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 
+/**
+ * Web Flux Configurations
+ */
 @EnableWebFlux
 @Configuration
 public class WebFluxConfiguration implements WebFluxConfigurer {

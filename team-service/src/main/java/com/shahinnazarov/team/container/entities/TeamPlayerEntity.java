@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * Team Player Entity relations with teams and players many to many
+ */
 @Data
 @Entity
 @Table(name = "t_team_players")

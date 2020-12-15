@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * Player Response DTO
+ */
 @Data
 public class PlayerResponse {
     private Long id;

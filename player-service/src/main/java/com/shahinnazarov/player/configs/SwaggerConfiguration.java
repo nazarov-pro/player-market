@@ -8,6 +8,9 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * Swagger configurations
+ */
 @Configuration
 public class SwaggerConfiguration {
 
@@ -23,8 +26,8 @@ public class SwaggerConfiguration {
 
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("Player Market REST API")
-                .description("Player Market")
+                .title("Player Service REST API")
+                .description("Player Service")
                 .version("1.0.0")
                 .build();
     }

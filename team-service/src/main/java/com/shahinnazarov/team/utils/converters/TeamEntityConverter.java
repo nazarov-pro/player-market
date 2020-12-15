@@ -5,6 +5,9 @@ import com.shahinnazarov.team.container.dto.TeamRequest;
 import com.shahinnazarov.team.container.entities.TeamEntity;
 import org.springframework.stereotype.Component;
 
+/**
+ * TeamEntityConverter - Converting from request to entity
+ */
 @Component
 public class TeamEntityConverter implements BaseConverter<TeamRequest, TeamEntity> {
 
@@ -13,6 +16,7 @@ public class TeamEntityConverter implements BaseConverter<TeamRequest, TeamEntit
         TeamEntity entity = new TeamEntity();
         entity.setId(item.getId());
         entity.setName(item.getName());
+        entity.setCommissionPercentage(item.getCommissionPercentage());
         return entity;
     }
 

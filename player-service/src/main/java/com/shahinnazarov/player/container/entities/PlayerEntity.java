@@ -1,12 +1,19 @@
 package com.shahinnazarov.player.container.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Player Entity
+ */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "p_player")
 public class PlayerEntity {

@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+/**
+ * AppConfig contains application related general configurations.
+ */
 @Configuration
 public class AppConfig {
     @Bean("json")

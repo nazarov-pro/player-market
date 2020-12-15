@@ -10,7 +10,7 @@ import java.util.Collection;
  * <ul>
  *     <li>maxPages - indicates maximum available pages</li>
  *     <li>maxElementsPerPage - indicates maximum elements in a page</li>
- *     <li>currentPageNumber - indicates current page index</li>
+ *     <li>currentPageIndex - indicates current page index</li>
  * </ul>
  * @param <T> defines type of item
  */
@@ -18,8 +18,8 @@ import java.util.Collection;
 @EqualsAndHashCode(callSuper = false)
 public class ApiCollectionResponse<T> extends ApiResponse {
     private Collection<T> items;
-    private int maxPages;
-    private int maxElementsPerPage;
-    private int currentPageNumber;
+    private Integer maxPages;
+    private Integer maxElementsPerPage;
+    private Integer currentPageIndex;
 
 }

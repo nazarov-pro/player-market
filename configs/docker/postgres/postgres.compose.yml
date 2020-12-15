@@ -1,7 +1,7 @@
 version: "3"
 services:
   player_market_db:
-    container_name: player_market_db
+    container_name: player-market-db
     image: postgres:12
     ports:
       - "5432:5432"
@@ -11,7 +11,13 @@ services:
     volumes:
       - player_market_db:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
+    networks:
+      - db-network
 volumes:
   player_market_db:
     driver: local
+
+networks:
+  db-network:
+    name: db-player-market-network
+    external: true

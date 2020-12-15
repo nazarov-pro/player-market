@@ -7,6 +7,9 @@ import com.shahinnazarov.common.container.models.ApiResponse;
 
 import java.util.Collection;
 
+/**
+ * Contains helper methods for generating {@link ApiResponse}
+ */
 public interface ApiResponseGenerator {
     <T> ApiSingleResponse<T> generate(T item);
     <T> ApiCollectionResponse<T> generateForCollection(Collection<T> items);

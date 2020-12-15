@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-
+/**
+ * Team Player ID Primary Key
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"teamId", "playerId"})

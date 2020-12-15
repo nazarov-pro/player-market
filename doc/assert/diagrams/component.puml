@@ -10,7 +10,7 @@ package "Infrastructure" as infra {
     package "Player Market" as internal {
         component "Eureka" as service_discovery <<Service Discovery>>
 
-        component "Zuul" as gateway <<API Gateway>>
+        component "Spring Cloud Gateway" as gateway <<API Gateway>>
 
         component "Team Service" as team_svc <<Microservice>>
 

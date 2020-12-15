@@ -1,8 +1,5 @@
 plugins {
     id 'java'
-    id 'jacoco'
-//    id 'org.springframework.boot' version '2.3.0.RELEASE'
-//    id 'com.google.cloud.tools.jib' version '2.3.0'
 }
 
 ext {
@@ -10,17 +7,10 @@ ext {
     springBootVersion = '2.3.0.RELEASE'
     springDependencyManagementVersion = '1.0.8.RELEASE'
     lombokVersion = '1.18.16'
-
     swaggerVersion = '3.0.0'
-
-    log4j2Version = '2.11.2'
+    springdocSwaggerVersion = '1.2.33'
+    feignHttpVersion = '11.0'
     jacksonVersion = '2.9.2'
-    jjwtVersion = '0.11.2'
-    webSocketVersion = '1.1'
-    ehCacheVersion = '3.8.1'
-    cacheApiVersion = '1.1.1'
-    tyrusVersion = '1.9'
-
     junitVersion = '5.4.2'
     mockitoVersion = '3.4.2'
     testContainersVersion = '1.15.0'
@@ -41,6 +31,10 @@ subprojects {
         mavenCentral()
     }
 
+    test {
+        useJUnitPlatform()
+    }
+
     dependencies {
         compileOnly("org.projectlombok:lombok:${lombokVersion}")
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
@@ -48,83 +42,9 @@ subprojects {
     }
 }
 
-//apply plugin: 'io.spring.dependency-management'
-//apply from: 'gradle/jacoco.gradle'
-//apply from: 'gradle/docker.gradle'
-
-
 group 'com.shahinnazarov'
 version "$versionMajorNumber.$versionMinorNumber.$versionBuildNumber"
 
 repositories {
     mavenCentral()
-}
-
-test {
-    useJUnitPlatform()
-}
-
-dependencies {
-    //Base
-//    implementation('org.springframework.boot:spring-boot-starter') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    //Monitoring, Metrics
-//    implementation('org.springframework.boot:spring-boot-starter-actuator') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation('org.springframework.boot:spring-boot-starter-mail') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//
-//    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:${springCloudVersion}") {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation "org.postgresql:postgresql"
-//    implementation('org.springframework.boot:spring-boot-starter-cache') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation "javax.cache:cache-api:${cacheApiVersion}"
-//    implementation "org.ehcache:ehcache:${ehCacheVersion}"
-//
-//    //Web
-//    implementation("org.springframework.boot:spring-boot-starter-webflux") {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation("org.springframework.boot:spring-boot-starter-security") {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    implementation "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
-//    implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
-//    implementation "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
-//    implementation "io.springfox:springfox-boot-starter:${swaggerVersion}"
-//    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonVersion}"
-//    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
-//    implementation "javax.websocket:javax.websocket-client-api:${webSocketVersion}"
-//
-//    //Utils
-//    compileOnly "org.projectlombok:lombok"
-//    annotationProcessor "org.projectlombok:lombok"
-//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-//
-//    implementation 'javax.validation:validation-api'
-//    implementation 'org.hibernate.validator:hibernate-validator'
-//    implementation 'org.hibernate.validator:hibernate-validator-annotation-processor'
-//    implementation "org.springframework.boot:spring-boot-starter-log4j2"
-//
-//    //Test
-//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-//    }
-//    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-//    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
-//    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
-//    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
-//    testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
-//    testImplementation "org.testcontainers:junit-jupiter:${testContainersVersion}"
-//    testImplementation "org.testcontainers:testcontainers:${testContainersVersion}"
-//    testImplementation "org.testcontainers:postgresql:${testContainersVersion}"
 }

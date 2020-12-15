@@ -1,0 +1,21 @@
+version: "3"
+services:
+  gateway:
+    container_name: gateway
+    build: .
+    ports:
+      - "8800:8800"
+    environment:
+      GATEWAY_PORT: 8800
+      EUREKA_CLIENT_URL: http://service-discovery:8761/eureka
+    networks:
+      - backend-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+networks:
+  backend-network:
+    name: backend-player-market-network
+    external: true

@@ -3,15 +3,18 @@ package com.shahinnazarov.player.utils.converters;
 import com.shahinnazarov.common.container.BaseConverter;
 import com.shahinnazarov.player.container.dto.PlayerResponse;
 import com.shahinnazarov.player.container.entities.PlayerEntity;
-import com.shahinnazarov.player.services.TransferFeeCalculator;
+import com.shahinnazarov.player.services.TransferFeeCalculationService;
 import com.shahinnazarov.player.utils.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * PlayerResponseConverter - converting entity to response
+ */
 @Component
 @RequiredArgsConstructor
 public class PlayerResponseConverter implements BaseConverter<PlayerEntity, PlayerResponse> {
-    private final TransferFeeCalculator transferFeeCalculator;
+    private final TransferFeeCalculationService transferFeeCalculationService;
 
     @Override
     public PlayerResponse convert(PlayerEntity item) {
@@ -21,7 +24,7 @@ public class PlayerResponseConverter implements BaseConverter<PlayerEntity, Play
         response.setLastname(item.getLastname());
         response.setId(item.getId());
         response.setMonthsOfExperience(item.getMonthsOfExperience());
-        response.setTransferFee(transferFeeCalculator.calculateTransferFee(item));
+        response.setTransferFee(transferFeeCalculationService.calculate(item));
         return response;
     }
 

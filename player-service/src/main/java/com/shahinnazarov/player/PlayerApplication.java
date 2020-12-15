@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * Main execution point of the Player Service Application
+ */
 @EnableDiscoveryClient
 @SpringBootApplication
 public class PlayerApplication {
